@@ -92,29 +92,26 @@
 
     <script>
 
-        let titulo = 'Mini-Sitio | Desarrollo de Software';
+        const titulo = 'Mini-Sitio | Desarrollo de Software';
         let contador = 0;
-        let url = 'https://ejemplo.com';
+        const url = 'https://ejemplo.com';
 
         contador++;
         document.getElementById('titulo-dinamico').textContent = titulo;
 
-
         const usuario = { nombre: 'Aprendiz SENA', rol: 'Estudiante ADSO' };
 
-        const FechaActual = new Date();
-        const NombreUsuario = usuario.nombre;
-
+        const fechaActual = new Date();
+        const nombreUsuario = usuario.nombre;
 
         function obtenerSaludo() {
-            // obtener hora                  
             const hora = new Date().getHours();
             if (hora < 12) return 'Buenos días';
             if (hora < 18) return 'Buenas tardes';
-            return 'Buenas noches';       
+            return 'Buenas noches';
         }
 
-        console.log(obtenerSaludo() + ', ' + NombreUsuario);
+        console.log(obtenerSaludo() + ', ' + nombreUsuario);
 
 
         function enviarFormulario() {
@@ -122,13 +119,13 @@
             const email = document.getElementById('email').value;
             const estado = document.getElementById('mensaje-estado');
 
-            if (nombre == '') {
+            if (nombre === '') {
                 estado.textContent = 'El nombre es requerido.';
                 return;
             }
 
-            if (email == '') {
-                estado.textContent = 'El correo es requerido.';
+            if (email === '' || !email.includes('@')) {
+                estado.textContent = 'Ingresa un correo electrónico válido.';
                 return;
             }
 
@@ -139,10 +136,9 @@
         const enlaces = document.querySelectorAll('nav a');
         const paginaActual = window.location.pathname;
 
-        enlaces.forEach(function(enlace) {
+        enlaces.forEach((enlace) => {
             if (paginaActual.includes(enlace.getAttribute('href'))) {
                 enlace.classList.add('activo');
-                enlace.classList.add('seleccionado'); 
             }
         });
 
