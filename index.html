@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Mi Página</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Desarrollo de Software</h1>
+        <span id="titulo-dinamico"></span>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>¿Qué es el Desarrollo de Software?</h2>
+            <br>
+            <p>
+                El desarrollo de software es el proceso de crear, diseñar, programar, probar
+                y mantener aplicaciones o sistemas informáticos. Este proceso permite
+                construir soluciones tecnológicas que ayudan a resolver problemas
+                en diferentes áreas como la educación, la salud, las empresas y el entretenimiento.
+            </p>
+        </section>
+
+        <section>
+            <h2>Lenguajes de Programación</h2>
+            <br>
+            <p>
+                Los lenguajes de programación son herramientas que utilizan los desarrolladores
+                para escribir instrucciones que las computadoras puedan entender. Algunos de
+                los lenguajes más utilizados son:
+            </p>
+            <br>
+            <ul>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>Java</li>
+                <li>C#</li>
+                <li>PHP</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Etapas del Desarrollo de Software</h2>
+            <br>
+            <ol>
+                <li>Análisis de requisitos</li>
+                <li>Diseño del sistema</li>
+                <li>Programación</li>
+                <li>Pruebas</li>
+                <li>Mantenimiento</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Importancia del Desarrollo de Software</h2>
+            <br>
+            <p>
+                El desarrollo de software es fundamental en la actualidad porque permite
+                automatizar procesos, mejorar la productividad y crear soluciones
+                tecnológicas innovadoras. Gracias al software, es posible desarrollar
+                aplicaciones móviles, páginas web, sistemas empresariales y videojuegos.
+            </p>
+        </section>
+
+        <section>
+            <h2>Contacto</h2>
+            <br>
+            <input type="text" id="nombre" placeholder="Tu nombre">
+            <br><br>
+            <input type="text" id="email" placeholder="Tu correo electrónico">
+            <br><br>
+            <p id="mensaje-estado"></p>
+            <button onclick="enviarFormulario()">Enviar</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Mi página</p>
+    </footer>
+
+    <script>
+
+        const titulo = 'Mini-Sitio | Desarrollo de Software';
+        let contador = 0;
+        const url = 'https://ejemplo.com';
+
+        contador++;
+        document.getElementById('titulo-dinamico').textContent = titulo;
+
+        const usuario = { nombre: 'Aprendiz SENA', rol: 'Estudiante ADSO' };
+
+        const fechaActual = new Date();
+        const nombreUsuario = usuario.nombre;
+
+        function obtenerSaludo() {
+            const hora = new Date().getHours();
+            if (hora < 12) return 'Buenos días';
+            if (hora < 18) return 'Buenas tardes';
+            return 'Buenas noches';
+        }
+
+        console.log(obtenerSaludo() + ', ' + nombreUsuario);
+
+
+        function enviarFormulario() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const estado = document.getElementById('mensaje-estado');
+
+            if (nombre === '') {
+                estado.textContent = 'El nombre es requerido.';
+                return;
+            }
+
+            if (email === '' || !email.includes('@')) {
+                estado.textContent = 'Ingresa un correo electrónico válido.';
+                return;
+            }
+
+            estado.textContent = 'Formulario enviado correctamente.';
+        }
+
+
+        const enlaces = document.querySelectorAll('nav a');
+        const paginaActual = window.location.pathname;
+
+        enlaces.forEach((enlace) => {
+            if (paginaActual.includes(enlace.getAttribute('href'))) {
+                enlace.classList.add('activo');
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
